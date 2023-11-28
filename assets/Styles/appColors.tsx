@@ -4,5 +4,6 @@ const appColors = {
   buttonColor: "#FCC55F",
   headerColor: "#8F2100",
   white: "white",
+  grey: "#6b6b6b",
 };
 export default appColors;
