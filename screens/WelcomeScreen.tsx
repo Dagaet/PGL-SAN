@@ -1,8 +1,8 @@
 import { Button, Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import appColors from "../assets/Styles/appColors";
-
-const WelcomeScreen = () => {
+import { DrawerContentComponentProps } from "@react-navigation/drawer";
+const WelcomeScreen = ({ navigation }: DrawerContentComponentProps) => {
   return (
     <View>
       <Text style={styles.mainText}>Welcome, anon</Text>
@@ -12,7 +12,10 @@ const WelcomeScreen = () => {
       ></Image>
       <View style={styles.loginContainer}>
         <Text style={styles.loginText}>You need to login to continue</Text>
-        <Pressable style={styles.logInButton}>
+        <Pressable
+          style={styles.logInButton}
+          onPress={() => navigation.navigate("Login")}
+        >
           <Text>Click to login</Text>
         </Pressable>
       </View>
