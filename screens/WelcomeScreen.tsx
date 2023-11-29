@@ -16,7 +16,7 @@ const WelcomeScreen = ({ navigation }: DrawerContentComponentProps) => {
           style={styles.logInButton}
           onPress={() => navigation.navigate("Login")}
         >
-          <Text>Click to login</Text>
+          <Text style={styles.logInButtonText}>Click to login</Text>
         </Pressable>
       </View>
     </View>
@@ -64,6 +64,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     height: 50,
-    width: 150,
+    width: 210,
+  },
+  logInButtonText: {
+    fontSize: 20,
+    fontWeight: "700",
   },
 });
