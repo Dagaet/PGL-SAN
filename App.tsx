@@ -9,7 +9,7 @@ export default function App() {
     <LoginProvider>
       <View style={styles.container}>
         <NavigationContainer>
-          <MyDrawer></MyDrawer>
+          <MyDrawer />
         </NavigationContainer>
       </View>
     </LoginProvider>

@@ -1,24 +1,42 @@
-import { Button, Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import appColors from "../assets/Styles/appColors";
-import { DrawerContentComponentProps } from "@react-navigation/drawer";
-const WelcomeScreen = ({ navigation }: DrawerContentComponentProps) => {
+import { NavigationContext } from "@react-navigation/native";
+import { defaultUserContext, isLoggedContext } from "../contexts/LoginContext";
+const WelcomeScreen = () => {
+  const navigation = React.useContext(NavigationContext);
+  const isLogged = React.useContext(isLoggedContext);
+  const user = React.useContext(defaultUserContext);
+
   return (
     <View>
-      <Text style={styles.mainText}>Welcome, anon</Text>
-      <Image
-        source={require("../assets/arch.png")}
-        style={styles.image}
-      ></Image>
-      <View style={styles.loginContainer}>
-        <Text style={styles.loginText}>You need to login to continue</Text>
-        <Pressable
-          style={styles.logInButton}
-          onPress={() => navigation.navigate("Login")}
-        >
-          <Text style={styles.logInButtonText}>Click to login</Text>
-        </Pressable>
-      </View>
+      {isLogged.isLogged ? (
+        <>
+          <Text style={styles.mainText}>Welcome, anon</Text>
+          <Image
+            source={require("../assets/arch.png")}
+            style={styles.image}
+          ></Image>
+          <View style={styles.loginContainer}>
+            <Text style={styles.loginText}>You need to login to continue</Text>
+            <Pressable
+              style={styles.logInButton}
+              onPress={() => navigation?.navigate("Login")}
+            >
+              <Text style={styles.logInButtonText}>Click to login</Text>
+            </Pressable>
+          </View>
+        </>
+      ) : (
+        <>
+          <Text style={styles.mainText}>Welcome, {user.userName}</Text>
+          <View style={styles.loginContainer}>
+            <Text style={styles.loginText}>
+              Welcome to the app, you can use the options in the drawer section
+            </Text>
+          </View>
+        </>
+      )}
     </View>
   );
 };

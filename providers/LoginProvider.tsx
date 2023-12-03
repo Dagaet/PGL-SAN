@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import {
   isLoggedContext,
   defaultUserContext,
-  userGivenContext,
-  LoginContextUserType,
   LoginContextUserDefaultType,
   IsloggedContextType,
 } from "../contexts/LoginContext";
@@ -14,32 +12,16 @@ type LoginProviderProps = {
 
 export function LoginProvider(props: LoginProviderProps) {
   const { children } = props;
-  const [user, setUser] = useState({
-    name: "",
-    password: "",
-  });
-
-  const [defaultUser, setDefaultUser] = useState({
-    name: "Adrian",
-    password: "ñomblon",
-  });
 
   const [isLogged, setIsLogged] = useState(false);
 
-  const userIsLogged = () => {
-    if (user == defaultUser) {
-      setIsLogged(true);
-    } else {
-      setIsLogged(false);
-    }
+  const userIsLogged = () => setIsLogged(!isLogged);
+
+  const defaultUserData: LoginContextUserDefaultType = {
+    userName: "Adrian",
+    userPassword: "ababol",
   };
 
-  const userData: LoginContextUserType = {
-    user,
-  };
-  const defaultUserData: LoginContextUserDefaultType = {
-    defaultUser,
-  };
   const isLoggedData: IsloggedContextType = {
     isLogged,
     userIsLogged,
@@ -47,11 +29,9 @@ export function LoginProvider(props: LoginProviderProps) {
 
   return (
     <defaultUserContext.Provider value={defaultUserData}>
-      <userGivenContext.Provider value={userData}>
-        <isLoggedContext.Provider value={isLoggedData}>
-          {children}
-        </isLoggedContext.Provider>
-      </userGivenContext.Provider>
+      <isLoggedContext.Provider value={isLoggedData}>
+        {children}
+      </isLoggedContext.Provider>
     </defaultUserContext.Provider>
   );
 }
