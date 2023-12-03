@@ -1,12 +1,42 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import React, { useState } from "react";
 import appColors from "../assets/Styles/appColors";
+import { NavigationContext } from "@react-navigation/native";
 
 const LoginScreen = () => {
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const navigation = React.useContext(NavigationContext);
+
+  function checkUser() {
+    if (name == "Pepe" && password == "ñeño") {
+      navigation?.navigate("Welcome Page");
+    } else {
+      alert("error");
+    }
+  }
+
   return (
-    <View>
-      <Text style={styles.mainText}>Welcome, anon</Text>
-      <View style={styles.loginContainer}></View>
+    <View style={styles.mainContainer}>
+      {/* <Text>Nombre: {name}</Text>
+      <Text>Contra: {password}</Text> */}
+      <View style={styles.loginContainer}>
+        <TextInput
+          placeholder="Name"
+          style={styles.input}
+          value={name}
+          onChangeText={setName}
+        ></TextInput>
+        <TextInput
+          placeholder="Password"
+          style={styles.input}
+          value={password}
+          onChangeText={setPassword}
+        ></TextInput>
+        <Pressable style={styles.logInButton} onPress={checkUser}>
+          <Text style={styles.logInButtonText}>Click to login</Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
@@ -14,35 +44,19 @@ const LoginScreen = () => {
 export default LoginScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    alignContent: "center",
-  },
-  mainText: {
-    textAlign: "center",
-    fontSize: 30,
-    marginTop: 50,
-  },
-  image: {
-    width: 150,
-    height: 150,
-    marginTop: 15,
-    alignSelf: "center",
+  mainContainer: {
+    justifyContent: "center",
+    alignItems: "center",
   },
   loginContainer: {
     backgroundColor: appColors.grey,
-    width: 350,
-    height: 360,
-    marginTop: 20,
-    alignSelf: "center",
+    width: "90%",
+    height: "70%",
     borderTopLeftRadius: 50,
     borderBottomRightRadius: 50,
   },
-  loginText: {
-    fontSize: 25,
-    marginLeft: 20,
-    marginRight: 20,
-    alignSelf: "center",
-    marginTop: 80,
+  loginSubContainer: {
+    justifyContent: "space-evenly",
   },
   logInButton: {
     marginTop: 40,
@@ -53,5 +67,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: 50,
     width: 150,
+  },
+  input: {
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20,
+    backgroundColor: appColors.secondary,
+    borderRadius: 50,
+    padding: 10,
+    height: 40,
+    width: 230,
+  },
+  logInButtonText: {
+    fontSize: 20,
+    fontWeight: "700",
   },
 });
