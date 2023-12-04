@@ -2,7 +2,7 @@ import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import appColors from "../assets/Styles/appColors";
 import { NavigationContext } from "@react-navigation/native";
-import { defaultUserContext, isLoggedContext } from "../contexts/LoginContext";
+import { defaultUserContext, isLoggedContext } from "../contexts/DataContext";
 const WelcomeScreen = () => {
   const navigation = React.useContext(NavigationContext);
   const isLogged = React.useContext(isLoggedContext);

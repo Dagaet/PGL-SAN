@@ -2,17 +2,17 @@ import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import MyDrawer from "./components/MyDrawer";
-import { LoginProvider } from "./providers/LoginProvider";
+import { ContextsProvider } from "./providers/ContextsProvider";
 
 export default function App() {
   return (
-    <LoginProvider>
+    <ContextsProvider>
       <View style={styles.container}>
         <NavigationContainer>
           <MyDrawer />
         </NavigationContainer>
       </View>
-    </LoginProvider>
+    </ContextsProvider>
   );
 }
 

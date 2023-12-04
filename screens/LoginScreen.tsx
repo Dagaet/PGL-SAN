@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import appColors from "../assets/Styles/appColors";
 import { NavigationContext } from "@react-navigation/native";
-import { defaultUserContext, isLoggedContext } from "../contexts/LoginContext";
+import { defaultUserContext, isLoggedContext } from "../contexts/DataContext";
 
 const LoginScreen = () => {
   const [name, setName] = useState("");
