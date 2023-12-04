@@ -10,7 +10,7 @@ const WelcomeScreen = () => {
 
   return (
     <View>
-      {isLogged.isLogged ? (
+      {!isLogged.isLogged ? (
         <>
           <Text style={styles.mainText}>Welcome, anon</Text>
           <Image
