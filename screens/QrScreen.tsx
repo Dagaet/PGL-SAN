@@ -2,8 +2,9 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import { personalData } from "../data/Data";
 import appColors from "../assets/Styles/appColors";
+import QRCode from "react-native-qrcode-svg";
 
-const Portfolio = () => {
+const QrScreen = () => {
   const {
     personalImage,
     name,
@@ -21,12 +22,10 @@ const Portfolio = () => {
           <Image style={styles.personalImage} source={personalImage} />
           <Text style={styles.infoData}>{info}</Text>
           <View style={styles.textStyle}>
-            <Text style={styles.headerInfoStyle}>Cosas que me gustan: </Text>
-            {informationData.map((data, key) => (
-              <Text key={key} style={styles.informationStyle}>
-                {">"} {data}
-              </Text>
-            ))}
+            <Text style={styles.headerInfoStyle}>QR code: </Text>
+            <View style={styles.qrCode}>
+              <QRCode value={qrURL}></QRCode>
+            </View>
           </View>
         </View>
       </View>
@@ -34,7 +33,7 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+export default QrScreen;
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -49,7 +48,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    padding: 80,
+    padding: 30,
     backgroundColor: appColors.white,
     borderRadius: 40,
     marginVertical: 20,
@@ -63,38 +62,28 @@ const styles = StyleSheet.create({
     shadowRadius: 9.51,
     elevation: 25,
   },
-  personalImage: {
-    height: 150,
-    width: 150,
-    borderRadius: 50,
-  },
   cardTitleContainer: {
     height: "100%",
     flexDirection: "column",
     alignItems: "center",
-    // justifyContent: "center",
     width: "100%",
   },
   cardTitleText: {
     fontSize: 22,
     fontWeight: "bold",
-    paddingTop: 10,
     marginBottom: 20,
   },
-  cardBodyText: {
-    height: 120,
-    margin: 10,
+  personalImage: {
+    height: 150,
+    width: 150,
+    borderRadius: 100,
+    borderWidth: 5,
+    borderColor: appColors.buttonColor,
   },
-  buttonContainer: {
-    flexDirection: "row",
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
+  infoData: {
+    textAlign: "center",
+    marginTop: 10,
+    fontSize: 16,
   },
   textStyle: {
     color: "black",
@@ -107,47 +96,12 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 50,
   },
-  buttonText: {
-    color: "white",
-    fontWeight: "bold",
+  headerInfoStyle: {
+    marginTop: 10,
+    marginBottom: 20,
     textAlign: "center",
-  },
-  buttonDefault: {
-    backgroundColor: "#ccc",
-    borderColor: "#999",
-  },
-  buttonClose: {
-    backgroundColor: "#F194FF",
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22,
-  },
-  socialIconsContainer: {
-    flexDirection: "row",
-  },
-  iconImage: {
-    bottom: 10,
-    width: 50,
-    height: 50,
-    borderRadius: 50,
+    fontSize: 16,
+    fontWeight: "800",
   },
   informationStyle: {
     alignItems: "flex-start",
@@ -155,16 +109,12 @@ const styles = StyleSheet.create({
     width: 200,
     marginLeft: 30,
   },
-  headerInfoStyle: {
-    marginTop: 10,
-    marginLeft: "15%",
-    marginBottom: 20,
-  },
-  infoData: {
-    textAlign: "center",
-    marginTop: 10,
-  },
-  qr: {
-    bottom: 10,
+  qrCode: {
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+    height: 110,
+    width: 110,
+    backgroundColor: appColors.white,
   },
 });

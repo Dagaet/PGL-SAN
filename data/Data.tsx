@@ -12,7 +12,7 @@ export const personalData: PersonalDataType = {
     require("../assets/logoTwitter.png"),
     require("../assets/logolinkeding.png"),
   ],
-  info: "Un pive de La Gomera que está estudiando en Tenerife",
+  info: "Un pive de La Gomera que está estudiando en Tenerife por motivos varios",
   qrURL: "https://github.com/Dagaet",
   informationData: [
     "Metal Gear Solid",

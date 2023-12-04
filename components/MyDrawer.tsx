@@ -7,8 +7,9 @@ import {
 import appColors from "../assets/Styles/appColors";
 import WelcomeScreen from "../screens/WelcomeScreen";
 import LoginScreen from "../screens/LoginScreen";
-import Portfolio from "../screens/Portfolio";
+import Portfolio from "../screens/PortfolioScreen";
 import { isLoggedContext } from "../contexts/DataContext";
+import PortfolioScreen from "../screens/PortfolioScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -50,7 +51,7 @@ const MyDrawer = () => {
       {!isLogged.isLogged ? (
         <Drawer.Screen name="Login" component={LoginScreen} />
       ) : (
-        <Drawer.Screen name="Portfolio" component={Portfolio} />
+        <Drawer.Screen name="Portfolio" component={PortfolioScreen} />
       )}
     </Drawer.Navigator>
   );
