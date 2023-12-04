@@ -50,15 +50,18 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   mainContainer: {
-    justifyContent: "center",
+    flex: 1,
+    paddingTop: 120,
     alignItems: "center",
+    backgroundColor: appColors.secondary,
   },
   loginContainer: {
     backgroundColor: appColors.grey,
-    width: "90%",
-    height: "70%",
+    width: 350,
+    height: 300,
     borderTopLeftRadius: 50,
     borderBottomRightRadius: 50,
+    paddingTop: 30,
   },
   loginSubContainer: {
     justifyContent: "space-evenly",

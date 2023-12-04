@@ -32,7 +32,7 @@ const WelcomeScreen = () => {
           <Text style={styles.mainText}>
             Welcome, {defaultUserData.userName}
           </Text>
-          <View style={styles.loginContainer}>
+          <View style={styles.portFolioContainer}>
             <Image
               style={styles.image}
               source={require("../assets/SaulEn20Anos.jpg")}
@@ -72,14 +72,27 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     marginTop: 15,
-    borderRadius: 50,
     alignSelf: "center",
+    borderRadius: 50,
   },
   loginContainer: {
     backgroundColor: appColors.grey,
     width: 350,
     height: 400,
     marginTop: 20,
+    alignItems: "center",
+    paddingTop: 80,
+    alignSelf: "center",
+    borderTopLeftRadius: 50,
+    borderBottomRightRadius: 50,
+  },
+  portFolioContainer: {
+    backgroundColor: appColors.grey,
+    width: 350,
+    height: 400,
+    marginTop: 20,
+    paddingTop: 20,
+    alignItems: "center",
     alignSelf: "center",
     borderTopLeftRadius: 50,
     borderBottomRightRadius: 50,
@@ -88,14 +101,11 @@ const styles = StyleSheet.create({
     fontSize: 25,
     marginLeft: 20,
     marginRight: 20,
-    alignSelf: "center",
-    marginTop: 35,
   },
   logInButton: {
-    marginTop: 40,
+    marginTop: 25,
     borderRadius: 50,
     backgroundColor: appColors.buttonColor,
-    alignSelf: "center",
     alignItems: "center",
     justifyContent: "center",
     height: 50,

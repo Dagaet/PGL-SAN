@@ -2,7 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Profile from "./ProfileScreen";
 import QrScreen from "./QrScreen";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import appColors from "../assets/Styles/appColors";
 
 const Tab = createBottomTabNavigator();
@@ -15,11 +15,23 @@ export default function PortfolioScreen() {
           let iconName;
 
           if (route.name === "Profile") {
-            iconName = focused ? "person" : "person-outline";
+            return (
+              <Ionicons
+                name={focused ? "person" : "person-outline"}
+                size={size}
+                color={color}
+              />
+            );
           } else if (route.name === "QR") {
-            iconName = focused ? "qr-code" : "qr-code-outline";
+            return (
+              <Ionicons
+                name={focused ? "qr-code" : "qr-code-outline"}
+                size={size}
+                color={color}
+              />
+            );
           }
-          return <Ionicons name={iconName} size={size} color={color} />;
+          // return <Ionicons name={focused ? "qr-code" : "qr-code-outline"} size={size} color={color} />;
         },
         tabBarActiveTintColor: appColors.headerColor,
         tabBarInactiveTintColor: "gray",
