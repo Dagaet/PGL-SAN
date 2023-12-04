@@ -2,11 +2,11 @@ import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import appColors from "../assets/Styles/appColors";
 import { NavigationContext } from "@react-navigation/native";
-import { defaultUserContext, isLoggedContext } from "../contexts/DataContext";
+import { isLoggedContext } from "../contexts/DataContext";
+import { defaultUserData } from "../data/Data";
 const WelcomeScreen = () => {
   const navigation = React.useContext(NavigationContext);
   const isLogged = React.useContext(isLoggedContext);
-  const user = React.useContext(defaultUserContext);
 
   return (
     <View>
@@ -29,7 +29,9 @@ const WelcomeScreen = () => {
         </>
       ) : (
         <>
-          <Text style={styles.mainText}>Welcome, {user.userName}</Text>
+          <Text style={styles.mainText}>
+            Welcome, {defaultUserData.userName}
+          </Text>
           <View style={styles.loginContainer}>
             <Text style={styles.loginText}>
               Welcome to the app, you can use the options in the drawer section

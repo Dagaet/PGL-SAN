@@ -7,10 +7,13 @@ import {
 import appColors from "../assets/Styles/appColors";
 import WelcomeScreen from "../screens/WelcomeScreen";
 import LoginScreen from "../screens/LoginScreen";
+import Portfolio from "../screens/Portfolio";
+import { isLoggedContext } from "../contexts/DataContext";
 
 const Drawer = createDrawerNavigator();
 
 const MyDrawer = () => {
+  const isLogged = React.useContext(isLoggedContext);
   const drawerNavigationScreenOptions: DrawerNavigationOptions = {
     headerTitle: "PGL App SAINT",
     headerTitleAlign: "center",
@@ -47,7 +50,11 @@ const MyDrawer = () => {
         name="Welcome Page"
         component={WelcomeScreen}
       ></Drawer.Screen>
-      <Drawer.Screen name="Login" component={LoginScreen}></Drawer.Screen>
+      {!isLogged.isLogged ? (
+        <Drawer.Screen name="Login" component={LoginScreen}></Drawer.Screen>
+      ) : (
+        <Drawer.Screen name="Portfolio" component={Portfolio}></Drawer.Screen>
+      )}
     </Drawer.Navigator>
   );
 };

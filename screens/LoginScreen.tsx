@@ -2,19 +2,19 @@ import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import appColors from "../assets/Styles/appColors";
 import { NavigationContext } from "@react-navigation/native";
-import { defaultUserContext, isLoggedContext } from "../contexts/DataContext";
+import { isLoggedContext } from "../contexts/DataContext";
+import { defaultUserData } from "../data/Data";
 
 const LoginScreen = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const navigation = React.useContext(NavigationContext);
-  const defaultLoginUser = React.useContext(defaultUserContext);
   const isLogged = React.useContext(isLoggedContext);
 
   function checkUser() {
     if (
-      defaultLoginUser.userName == name &&
-      defaultLoginUser.userPassword == password
+      defaultUserData.userName == name &&
+      defaultUserData.userPassword == password
     ) {
       navigation?.navigate("Welcome Page");
       isLogged.userIsLogged();
