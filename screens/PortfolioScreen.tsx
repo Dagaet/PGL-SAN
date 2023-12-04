@@ -12,8 +12,6 @@ export default function PortfolioScreen() {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-
           if (route.name === "Profile") {
             return (
               <Ionicons
@@ -31,7 +29,6 @@ export default function PortfolioScreen() {
               />
             );
           }
-          // return <Ionicons name={focused ? "qr-code" : "qr-code-outline"} size={size} color={color} />;
         },
         tabBarActiveTintColor: appColors.headerColor,
         tabBarInactiveTintColor: "gray",
