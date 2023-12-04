@@ -9,7 +9,7 @@ const WelcomeScreen = () => {
   const isLogged = React.useContext(isLoggedContext);
 
   return (
-    <View>
+    <View style={styles.mainView}>
       {!isLogged.isLogged ? (
         <>
           <Text style={styles.mainText}>Welcome, anon</Text>
@@ -33,9 +33,19 @@ const WelcomeScreen = () => {
             Welcome, {defaultUserData.userName}
           </Text>
           <View style={styles.loginContainer}>
+            <Image
+              style={styles.image}
+              source={require("../assets/SaulEn20Anos.jpg")}
+            ></Image>
             <Text style={styles.loginText}>
               Welcome to the app, you can use the options in the drawer section
             </Text>
+            <Pressable
+              style={styles.logInButton}
+              onPress={() => navigation?.navigate("Portfolio")}
+            >
+              <Text style={styles.logInButtonText}>Portfolio</Text>
+            </Pressable>
           </View>
         </>
       )}
@@ -46,6 +56,10 @@ const WelcomeScreen = () => {
 export default WelcomeScreen;
 
 const styles = StyleSheet.create({
+  mainView: {
+    flex: 1,
+    backgroundColor: appColors.secondary,
+  },
   container: {
     alignContent: "center",
   },
@@ -55,15 +69,16 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   image: {
-    width: 150,
-    height: 150,
+    width: 120,
+    height: 120,
     marginTop: 15,
+    borderRadius: 50,
     alignSelf: "center",
   },
   loginContainer: {
     backgroundColor: appColors.grey,
     width: 350,
-    height: 360,
+    height: 400,
     marginTop: 20,
     alignSelf: "center",
     borderTopLeftRadius: 50,
@@ -74,7 +89,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     alignSelf: "center",
-    marginTop: 80,
+    marginTop: 35,
   },
   logInButton: {
     marginTop: 40,

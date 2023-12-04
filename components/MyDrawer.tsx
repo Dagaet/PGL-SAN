@@ -46,14 +46,11 @@ const MyDrawer = () => {
       initialRouteName="Welcome Page"
       screenOptions={drawerNavigationScreenOptions}
     >
-      <Drawer.Screen
-        name="Welcome Page"
-        component={WelcomeScreen}
-      ></Drawer.Screen>
+      <Drawer.Screen name="Welcome Page" component={WelcomeScreen} />
       {!isLogged.isLogged ? (
-        <Drawer.Screen name="Login" component={LoginScreen}></Drawer.Screen>
+        <Drawer.Screen name="Login" component={LoginScreen} />
       ) : (
-        <Drawer.Screen name="Portfolio" component={Portfolio}></Drawer.Screen>
+        <Drawer.Screen name="Portfolio" component={Portfolio} />
       )}
     </Drawer.Navigator>
   );

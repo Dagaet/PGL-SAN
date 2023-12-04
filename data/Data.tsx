@@ -19,6 +19,7 @@ export const personalData: PersonalDataType = {
     "Loh Cocheh",
     "Lah Muhere",
     "Loh Kamioneh",
+    "La musica",
   ],
 };
 
