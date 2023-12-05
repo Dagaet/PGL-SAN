@@ -36,6 +36,7 @@ const LoginScreen = () => {
           placeholder="Password"
           style={styles.input}
           value={password}
+          secureTextEntry={true}
           onChangeText={setPassword}
         ></TextInput>
         <Pressable style={styles.logInButton} onPress={checkUser}>
