@@ -37,9 +37,9 @@ const MyDrawer = () => {
     drawerInactiveTintColor: "lightgray",
     drawerInactiveBackgroundColor: appColors.primary,
     drawerType: "front",
-
     drawerStyle: {
       marginTop: 100,
+      backgroundColor: appColors.secondary,
     },
   };
   return (
