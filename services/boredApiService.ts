@@ -17,7 +17,10 @@ const getInitRequest = (httpVerb: string) => {
 };
 
 export const getActivity = async (): Promise<string> => {
-  const response = await fetch(BORED_API_URL, getInitRequest("GET"));
+  const response = await fetch(
+    BORED_API_URL + ACTIVITIES_PATH,
+    getInitRequest("GET")
+  );
   const json: BoredActivityResponse = await response.json();
 
   if (json != null) {
