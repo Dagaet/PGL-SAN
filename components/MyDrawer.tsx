@@ -10,7 +10,7 @@ import LoginScreen from "../screens/LoginScreen";
 import Portfolio from "../screens/PortfolioScreen";
 import { isLoggedContext } from "../contexts/DataContext";
 import PortfolioScreen from "../screens/PortfolioScreen";
-import ActivitieScreen from "../screens/ActivitieScreen";
+import ActivitieScreen from "../screens/ActivityScreen";
 
 const Drawer = createDrawerNavigator();
 
