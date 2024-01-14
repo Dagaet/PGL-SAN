@@ -4,6 +4,7 @@ import appColors from "../assets/Styles/appColors";
 import { NavigationContext } from "@react-navigation/native";
 import { isLoggedContext } from "../contexts/DataContext";
 import { defaultUserData } from "../data/Data";
+import { loginUser } from "../services/loginService";
 
 const LoginScreen = () => {
   const [name, setName] = useState("");
@@ -11,16 +12,15 @@ const LoginScreen = () => {
   const navigation = React.useContext(NavigationContext);
   const isLogged = React.useContext(isLoggedContext);
 
-  function checkUser() {
-    if (
-      defaultUserData.userName == name &&
-      defaultUserData.userPassword == password
-    ) {
-      navigation?.navigate("Welcome Page");
-      isLogged.userIsLogged();
-    } else {
-      alert("Incorrect Login");
-    }
+  function fetchLoginUser() {
+    const fetchData = async () => {
+      const results = await loginUser(name, password);
+      if (results == null) {
+        window.alert("No se pudo iniciar sesión");
+      }
+    };
+
+    fetchData();
   }
 
   return (
@@ -39,7 +39,7 @@ const LoginScreen = () => {
           secureTextEntry={true}
           onChangeText={setPassword}
         ></TextInput>
-        <Pressable style={styles.logInButton} onPress={checkUser}>
+        <Pressable style={styles.logInButton} onPress={() => fetchLoginUser()}>
           <Text style={styles.logInButtonText}>Click to login</Text>
         </Pressable>
         <Pressable
