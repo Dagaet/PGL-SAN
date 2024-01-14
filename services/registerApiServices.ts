@@ -19,11 +19,6 @@ export const loginUser = async (
     LOGIN_API_URL + LOGIN_PATH,
     postLoginRequest(name, password)
   );
-  const json: UserDataResponse = await response.json();
-
-  if (json != null) {
-    return json.name;
-  }
   if (response.status === 200) {
     const json: UserDataResponse = await response.json();
 
@@ -47,11 +42,7 @@ export const registerUser = async (
     LOGIN_API_URL + REGISTER_PATH,
     postRegisterRequest(name, email, password)
   );
-  const json: UserDataResponse = await response.json();
 
-  if (json != null) {
-    return json.name;
-  }
   if (response.status === 200) {
     const json: UserDataResponse = await response.json();
 
