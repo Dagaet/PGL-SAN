@@ -2,15 +2,26 @@ import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import appColors from "../assets/Styles/appColors";
 import { NavigationContext } from "@react-navigation/native";
+import { registerUser } from "../services/registerApiServices";
 
 const RegisterScreen = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  // const navigation = React.useContext(NavigationContext);
+  const navigation = React.useContext(NavigationContext);
 
   function register() {
-    console.log("Register");
+    const registerNewUser = async () => {
+      const results = await registerUser(name, email, password);
+      if (results == null) {
+        window.alert("No se pudo registrar usuario");
+      }
+      if (results != null) {
+        window.alert("Usuario registrado correctamente");
+        navigation?.navigate("Login");
+      }
+    };
+    registerNewUser();
   }
 
   return (
