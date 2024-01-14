@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import appColors from "../assets/Styles/appColors";
 import { NavigationContext } from "@react-navigation/native";
 import { userDataContext } from "../contexts/DataContext";
-import { loginUser } from "../services/loginService";
+import { loginUser } from "../services/registerApiServices";
 
 const LoginScreen = () => {
   const [name, setName] = useState("");

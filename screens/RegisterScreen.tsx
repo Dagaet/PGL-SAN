@@ -6,7 +6,8 @@ import { NavigationContext } from "@react-navigation/native";
 const RegisterScreen = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const navigation = React.useContext(NavigationContext);
+  const [email, setEmail] = useState("");
+  // const navigation = React.useContext(NavigationContext);
 
   function register() {
     console.log("Register");
@@ -24,8 +25,8 @@ const RegisterScreen = () => {
         <TextInput
           placeholder="Email"
           style={styles.input}
-          value={name}
-          onChangeText={setName}
+          value={email}
+          onChangeText={setEmail}
         ></TextInput>
         <TextInput
           placeholder="Password"

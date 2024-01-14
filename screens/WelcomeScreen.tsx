@@ -2,15 +2,15 @@ import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import appColors from "../assets/Styles/appColors";
 import { NavigationContext } from "@react-navigation/native";
-import { isLoggedContext } from "../contexts/DataContext";
+import { userDataContext } from "../contexts/DataContext";
 import { defaultUserData } from "../data/Data";
 const WelcomeScreen = () => {
   const navigation = React.useContext(NavigationContext);
-  const isLogged = React.useContext(isLoggedContext);
+  const userData = React.useContext(userDataContext);
 
   return (
     <View style={styles.mainView}>
-      {!isLogged.isLogged ? (
+      {!userData.isLogged ? (
         <>
           <Text style={styles.mainText}>Welcome, anon</Text>
           <Image
@@ -29,9 +29,7 @@ const WelcomeScreen = () => {
         </>
       ) : (
         <>
-          <Text style={styles.mainText}>
-            Welcome, {defaultUserData.userName}
-          </Text>
+          <Text style={styles.mainText}>Welcome, {userData.name}</Text>
           <View style={styles.portFolioContainer}>
             <Image
               style={styles.image}

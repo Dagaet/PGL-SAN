@@ -2,8 +2,8 @@ import React from "react";
 
 type userDataContextType = {
   isLogged: boolean;
-  userIsLogged: Function;
   name: string;
+  userIsLogged: Function;
   setUser: Function;
 };
 

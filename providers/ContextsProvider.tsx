@@ -11,14 +11,13 @@ export function ContextsProvider(props: ContextsProviderProps) {
   const [isLogged, setIsLogged] = useState(false);
   const [name, setName] = useState("");
 
-  const setUser = (data: string) => setName(data);
-
+  const setUser = (username: string) => setName(username);
   const userIsLogged = () => setIsLogged(!isLogged);
 
   const userLoggedData: userDataContextType = {
     isLogged,
-    userIsLogged,
     name,
+    userIsLogged,
     setUser,
   };
 

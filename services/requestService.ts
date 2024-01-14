@@ -29,4 +29,4 @@ const postRegisterRequest = (name: string, email: string, password: string) => {
   return init;
 };
 
-export { postLoginRequest };
+export { postLoginRequest, postRegisterRequest };
