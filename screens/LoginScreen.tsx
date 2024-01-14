@@ -2,16 +2,14 @@ import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import appColors from "../assets/Styles/appColors";
 import { NavigationContext } from "@react-navigation/native";
-import { isLoggedContext } from "../contexts/DataContext";
-import { defaultUserData } from "../data/Data";
+import { userDataContext } from "../contexts/DataContext";
 import { loginUser } from "../services/loginService";
 
 const LoginScreen = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const navigation = React.useContext(NavigationContext);
-  const isLogged = React.useContext(isLoggedContext);
-  const userData = React.useContext();
+  const userData = React.useContext(userDataContext);
 
   function fetchLoginUser() {
     const fetchData = async () => {
@@ -21,10 +19,10 @@ const LoginScreen = () => {
       }
       if (results != null) {
         navigation?.navigate("Welcome Page");
-        isLogged.userIsLogged();
+        userData.userIsLogged();
+        userData.setUser(results);
       }
     };
-
     fetchData();
   }
 
