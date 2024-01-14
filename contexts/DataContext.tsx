@@ -5,6 +5,17 @@ type IsloggedContextType = {
   userIsLogged: Function;
 };
 
-const isLoggedContext = React.createContext({} as IsloggedContextType);
+type userLoggedContextType = {
+  name: string;
+  setUser: Function;
+};
 
-export { isLoggedContext, IsloggedContextType };
+const isLoggedContext = React.createContext({} as IsloggedContextType);
+const userLoggedContext = React.createContext({} as userLoggedContextType);
+
+export {
+  isLoggedContext,
+  userLoggedContext,
+  IsloggedContextType,
+  userLoggedContextType,
+};
