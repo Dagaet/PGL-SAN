@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  isLoggedContext,
-  userLoggedContext,
-  IsloggedContextType,
-  userLoggedContextType,
-} from "../contexts/DataContext";
+import { userDataContext, userDataContextType } from "../contexts/DataContext";
 
 type ContextsProviderProps = {
   children: JSX.Element | JSX.Element[];
@@ -20,21 +15,16 @@ export function ContextsProvider(props: ContextsProviderProps) {
 
   const userIsLogged = () => setIsLogged(!isLogged);
 
-  const isLoggedData: IsloggedContextType = {
+  const userLoggedData: userDataContextType = {
     isLogged,
     userIsLogged,
-  };
-
-  const userData: userLoggedContextType = {
     name,
     setUser,
   };
 
   return (
-    <isLoggedContext.Provider value={isLoggedData}>
-      <userLoggedContext.Provider value={userData}>
-        {children}
-      </userLoggedContext.Provider>
-    </isLoggedContext.Provider>
+    <userDataContext.Provider value={userLoggedData}>
+      {children}
+    </userDataContext.Provider>
   );
 }

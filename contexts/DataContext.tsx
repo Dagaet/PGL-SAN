@@ -1,21 +1,12 @@
 import React from "react";
 
-type IsloggedContextType = {
+type userDataContextType = {
   isLogged: boolean;
   userIsLogged: Function;
-};
-
-type userLoggedContextType = {
   name: string;
   setUser: Function;
 };
 
-const isLoggedContext = React.createContext({} as IsloggedContextType);
-const userLoggedContext = React.createContext({} as userLoggedContextType);
+const userDataContext = React.createContext({} as userDataContextType);
 
-export {
-  isLoggedContext,
-  userLoggedContext,
-  IsloggedContextType,
-  userLoggedContextType,
-};
+export { userDataContext, userDataContextType };

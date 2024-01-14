@@ -11,12 +11,17 @@ const LoginScreen = () => {
   const [password, setPassword] = useState("");
   const navigation = React.useContext(NavigationContext);
   const isLogged = React.useContext(isLoggedContext);
+  const userData = React.useContext();
 
   function fetchLoginUser() {
     const fetchData = async () => {
       const results = await loginUser(name, password);
       if (results == null) {
         window.alert("No se pudo iniciar sesión");
+      }
+      if (results != null) {
+        navigation?.navigate("Welcome Page");
+        isLogged.userIsLogged();
       }
     };
 

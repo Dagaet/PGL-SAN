@@ -28,7 +28,7 @@ export const loginUser = async (
   if (json != null) {
     return json.name;
   }
-  if (response.status == 201) {
+  if (response.status === 200) {
     const json: UserDataResponse = await response.json();
 
     if (json != null) {
@@ -36,7 +36,7 @@ export const loginUser = async (
     }
   }
 
-  if (response.status == 400) {
+  if (response.status === 400) {
     return null;
   }
   return "Error";
