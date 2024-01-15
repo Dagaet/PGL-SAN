@@ -3,7 +3,7 @@ import React from "react";
 import appColors from "../assets/Styles/appColors";
 import { NavigationContext } from "@react-navigation/native";
 import { userDataContext } from "../contexts/DataContext";
-import { defaultUserData } from "../data/Data";
+
 const WelcomeScreen = () => {
   const navigation = React.useContext(NavigationContext);
   const userData = React.useContext(userDataContext);
