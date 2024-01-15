@@ -5,7 +5,7 @@ import {
   postRegisterRequest,
 } from "./requestService";
 
-const LOGIN_API_URL = "http://172.16.103.249:8888/users";
+const LOGIN_API_URL = "http://192.168.0.15:8888/users";
 const LOGIN_PATH = "/login";
 const REGISTER_PATH = "/register";
 const LOGOUT_PATH = "/logout";
@@ -14,6 +14,10 @@ type UserDataResponse = {
   id: number;
   name: string;
   email: string;
+};
+
+type LogoutResponse = {
+  message: string;
 };
 
 export const loginUser = async (
@@ -33,7 +37,6 @@ export const loginUser = async (
   };
 
   const cookie: string | null = response.headers.get("Set-Cookie");
-  console.log(cookie);
   storeData(cookie);
 
   if (response.status === 200) {
@@ -85,20 +88,24 @@ export const registerUser = async (
   return "Error";
 };
 
-export const logoutUser = async (
-  name: string,
-  email: string,
-  password: string
-): Promise<string | null> => {
+export const logoutUser = async (): Promise<string | null> => {
   const response = await fetch(
     LOGIN_API_URL + LOGOUT_PATH,
     postLogoutRequest()
   );
+
+  const removeValue = async () => {
+    try {
+      await AsyncStorage.removeItem("loginCookie");
+    } catch (e) {}
+  };
+  removeValue();
+
   if (response.status === 200) {
-    const json: UserDataResponse = await response.json();
+    const json: LogoutResponse = await response.json();
 
     if (json != null) {
-      return json.name;
+      return json.message;
     }
   }
   return "Error";
