@@ -29,4 +29,15 @@ const postRegisterRequest = (name: string, email: string, password: string) => {
   return init;
 };
 
-export { postLoginRequest, postRegisterRequest };
+const postLogoutRequest = () => {
+  const init: RequestInit = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  };
+  return init;
+};
+
+export { postLoginRequest, postRegisterRequest, postLogoutRequest };

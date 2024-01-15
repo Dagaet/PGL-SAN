@@ -14,10 +14,9 @@ const LoginScreen = () => {
   function fetchLoginUser() {
     const fetchData = async () => {
       const results = await loginUser(name, password);
-      if (results == null) {
+      if (results == null || results == "Error") {
         window.alert("No se pudo iniciar sesión");
-      }
-      if (results != null) {
+      } else {
         navigation?.navigate("Welcome Page");
         userData.userIsLogged();
         userData.setUser(results);

@@ -3,22 +3,25 @@ import React, { useState } from "react";
 import appColors from "../assets/Styles/appColors";
 import { NavigationContext } from "@react-navigation/native";
 import { registerUser } from "../services/registerApiServices";
+import { userDataContext } from "../contexts/DataContext";
 
 const RegisterScreen = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const navigation = React.useContext(NavigationContext);
+  const userData = React.useContext(userDataContext);
 
   function register() {
     const registerNewUser = async () => {
       const results = await registerUser(name, email, password);
-      if (results == null) {
+      if (results == null || results == "Error") {
         window.alert("No se pudo registrar usuario");
-      }
-      if (results != null) {
+      } else {
         window.alert("Usuario registrado correctamente");
-        navigation?.navigate("Login");
+        userData.userIsLogged();
+        userData.setUser(results);
+        navigation?.navigate("Welcome Page");
       }
     };
     registerNewUser();
