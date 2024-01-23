@@ -14,3 +14,8 @@ export type LoginContextUserDefaultType = {
   userName: string;
   userPassword: string;
 };
+
+export type RecordFile = {
+  time: string;
+  uri: string;
+};
