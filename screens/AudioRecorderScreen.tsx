@@ -101,7 +101,7 @@ const AudioRecorderScreen = () => {
   };
 
   return (
-    <View>
+    <View style={styles.backgroundScreen}>
       <View style={styles.recordingButtonContainer}>
         <TouchableOpacity
           style={styles.recordingButtonTouchable}
@@ -169,6 +169,10 @@ const styles = StyleSheet.create({
     display: "flex",
     marginVertical: 20,
   },
+  backgroundScreen: {
+    backgroundColor: "#e0d0c1",
+    height: "100%",
+  },
   record: {
     width: "50%",
     margin: 5,
@@ -179,7 +183,7 @@ const styles = StyleSheet.create({
   },
   bombAllButtonTouchable: {
     marginLeft: 10,
-    backgroundColor: appColors.secondary,
+    backgroundColor: "white",
     width: 100,
     height: 40,
     borderRadius: 50,
@@ -196,7 +200,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   recordingButtonTouchable: {
-    backgroundColor: appColors.secondary,
+    backgroundColor: "white",
     width: 140,
     height: 40,
     borderRadius: 50,
@@ -211,13 +215,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     width: "80%",
-    backgroundColor: "lightgray",
+    backgroundColor: "white",
     margin: 5,
     paddingVertical: 2,
     padding: 10,
     borderRadius: 20,
     alignSelf: "center",
     alignItems: "center",
+    borderColor: "black",
+    borderWidth: 2,
   },
   delete: {
     borderRadius: 50,
@@ -230,7 +236,6 @@ const styles = StyleSheet.create({
   deleteTouchable: {
     borderRadius: 50,
     marginVertical: 10,
-    // marginLeft: 10,
   },
   playTouchable: {
     borderRadius: 70,
@@ -242,6 +247,7 @@ const styles = StyleSheet.create({
     height: 50,
     textAlign: "center",
     textAlignVertical: "center",
+    borderRadius: 50,
   },
   touchableButtons: {
     flexDirection: "row",
