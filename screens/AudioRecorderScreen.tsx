@@ -13,7 +13,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { storeData } from "../services/storage-service";
+import { removeData, storeData } from "../services/storage-service";
 import {
   getDurationFormatted,
   playRecordFile,
@@ -95,8 +95,8 @@ const AudioRecorderScreen = () => {
   };
 
   const deleteAll = () => {
+    removeData("recordings");
     let newRecordings: RecordFile[] = [];
-    storeData("recordings", JSON.stringify(newRecordings));
     setRecordings(newRecordings);
   };
 
@@ -110,14 +110,21 @@ const AudioRecorderScreen = () => {
           {recording ? (
             <>
               <FontAwesome name="stop" size={24} color="black" />
-              <Text style={styles.recordingButton}>Stop recording</Text>
+              <Text>Stop recording</Text>
             </>
           ) : (
             <>
-              <Fontisto name="record" size={24} color="red" />
-              <Text style={styles.recordingButton}>Start recording</Text>
+              <FontAwesome name="microphone" size={24} color="black" />
+              <Text>Start recording</Text>
             </>
           )}
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.bombAllButtonTouchable}
+          onPress={deleteAll}
+        >
+          <FontAwesome name="bomb" size={24} color="black" />
+          <Text>Erase all</Text>
         </TouchableOpacity>
       </View>
 
@@ -170,12 +177,24 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     fontSize: 17,
   },
+  bombAllButtonTouchable: {
+    marginLeft: 10,
+    backgroundColor: appColors.secondary,
+    width: 100,
+    height: 40,
+    borderRadius: 50,
+    borderWidth: 3,
+    borderColor: appColors.headerColor,
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+  },
   recordingButtonContainer: {
     justifyContent: "center",
     alignItems: "center",
+    flexDirection: "row",
     marginTop: 20,
   },
-  recordingButton: {},
   recordingButtonTouchable: {
     backgroundColor: appColors.secondary,
     width: 140,
@@ -209,13 +228,11 @@ const styles = StyleSheet.create({
     textAlignVertical: "center",
   },
   deleteTouchable: {
-    // backgroundColor: appColors.primary,
     borderRadius: 50,
     marginVertical: 10,
     // marginLeft: 10,
   },
   playTouchable: {
-    // backgroundColor: appColors.primary,
     borderRadius: 70,
     marginVertical: 10,
     textAlign: "center",
@@ -228,7 +245,6 @@ const styles = StyleSheet.create({
   },
   touchableButtons: {
     flexDirection: "row",
-    // backgroundColor: "lightblue",
     justifyContent: "flex-end",
   },
   text: {
