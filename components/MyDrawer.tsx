@@ -13,6 +13,7 @@ import PortfolioScreen from "../screens/PortfolioScreen";
 import ActivitieScreen from "../screens/ActivityScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import LogoutScreen from "../screens/LogoutScreen";
+import AudioRecorderScreen from "../screens/AudioRecorderScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -60,6 +61,10 @@ const MyDrawer = () => {
         <>
           <Drawer.Screen name="Portfolio" component={PortfolioScreen} />
           <Drawer.Screen name="Activities" component={ActivitieScreen} />
+          <Drawer.Screen
+            name="Audio Recorder"
+            component={AudioRecorderScreen}
+          />
           <Drawer.Screen name="Logout" component={LogoutScreen} />
         </>
       )}
