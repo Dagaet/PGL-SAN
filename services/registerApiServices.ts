@@ -5,7 +5,7 @@ import {
   postRegisterRequest,
 } from "./requestService";
 
-const LOGIN_API_URL = "http://192.168.0.15:8888/users";
+const LOGIN_API_URL = "http://172.16.100.104:8888/users";
 const LOGIN_PATH = "/login";
 const REGISTER_PATH = "/register";
 const LOGOUT_PATH = "/logout";
